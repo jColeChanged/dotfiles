@@ -1,4 +1,3 @@
-;; Commentary
 ;;  I'm expecting to be running emacs24
 ;;
 ;; The first thing we need to do to get good Python support is to get el-get
@@ -8,7 +7,8 @@
 ;; 
 ;; Then M-x package-install auto-pair.
 ;;
-
+;; Next M-x package-install web-mode.
+;;
 
 ;; Set up package stuff
 (require 'package)
@@ -40,3 +40,7 @@
 ;; set up autopair
 (require 'autopair)
 (autopair-global-mode)
+
+;; Set up web mode for basic html files
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
