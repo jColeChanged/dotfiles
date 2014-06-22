@@ -44,3 +44,12 @@
 ;; Set up web mode for basic html files
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; Use zenburn theme
+(load-theme 'zenburn t)
+
+;; Set up some graphical stuff
+(load-theme `zenburn t)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
