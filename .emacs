@@ -9,6 +9,8 @@
 ;;
 ;; Next M-x package-install web-mode.
 ;;
+;; Don't forget M-x package-install evil and zenburn-theme
+;;
 
 ;; Set up package stuff
 (require 'package)
