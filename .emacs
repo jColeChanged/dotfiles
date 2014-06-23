@@ -46,10 +46,13 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; Use zenburn theme
-(load-theme 'zenburn t)
 
 ;; Set up some graphical stuff
 (load-theme `zenburn t)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+
+;; Make sure I don't get RSI
+(require 'evil)
+(evil-mode 1)
