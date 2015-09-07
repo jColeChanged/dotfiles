@@ -1,16 +1,12 @@
-;;  I'm expecting to be running emacs24
-;;
-;; The first thing we need to do to get good Python support is to get el-get
-;; installed. From el-get install jedi.
-;;
-;; The next thing to do is to M-x package-install flycheck.
-;; 
-;; Then M-x package-install auto-pair.
-;;
-;; Next M-x package-install web-mode.
-;;
-;; Don't forget M-x package-install evil and zenburn-theme
-;;
+;; Emacs for Python integration
+;; git clone git://github.com/gabrielelanaro/emacs-for-python
+(load-file "~/.emacs.d/emacs-for-python/epy-init.el")
+
+;; Set up some graphical stuff
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
 
 ;; Set up package stuff
 (require 'package)
@@ -18,7 +14,13 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
+
+(require 'web-mode)
+(setq web-mode-engines-alist
+      '(("django" . "\\.html\\'")))
 
 ;; Set up el-get stuff
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -31,30 +33,3 @@
       (eval-print-last-sexp))))
 (el-get 'sync)
 
-
-;; set up jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-
-;; set up flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; set up autopair
-(require 'autopair)
-(autopair-global-mode)
-
-;; Set up web mode for basic html files
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-;; Use zenburn theme
-
-;; Set up some graphical stuff
-(load-theme `zenburn t)
-(scroll-bar-mode -1)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-
-;; Make sure I don't get RSI
-(require 'evil)
-(evil-mode 1)
